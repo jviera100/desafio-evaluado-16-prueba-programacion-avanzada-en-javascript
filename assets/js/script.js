@@ -9,7 +9,7 @@ class Animal {
     }
 }
 
-// Requerimiento 2: Crear las instancias de las clases utilizando los datos del formulario.
+
 // Selecciona el botón por su ID
 let btnRegistrar = document.getElementById('btnRegistrar');
 
@@ -54,6 +54,7 @@ btnRegistrar.addEventListener('click', function(event) {
     img = `./assets/imgs/${img}.jpg`; // Obtener la imagen del animal. Ahora todas las imágenes son .jpg
     sonido = `./assets/sounds/${sonido}.mp3`; // Obtener el sonido del animal
 
+    // Requerimiento 2: Crear las instancias de las clases utilizando los datos del formulario.
     // Crear una instancia de la clase Animal
     let animal = new Animal(name, edad, img, comentarios, sonido);
 
@@ -69,8 +70,9 @@ btnRegistrar.addEventListener('click', function(event) {
     preview.appendChild(imgPreview);
 
     // Requerimiento 8: Devolver el formulario en un estado inicial luego de registrar a cada animal.
-    this.form.reset();
+    event.target.form.reset();
 });
+
 
 // Función para agregar un animal a la tabla
 function addAnimalToTable(animal, tableId) {    
@@ -91,7 +93,7 @@ function addAnimalToTable(animal, tableId) {
 
     // Agrega un evento de clic a la imagen para abrir la ventana modal con los detalles del animal
     img.onclick = function() {
-      openModal(animal);
+      abrirModal(animal);
     };    
 
     // Crea un nuevo elemento de audio
@@ -111,41 +113,57 @@ function addAnimalToTable(animal, tableId) {
     div.appendChild(animalDiv);
 }
 
-// Requerimiento 3: Realizar una consulta asíncrona utilizando una función async/await para obtener las imágenes correspondientes a los animales.
-// Función asincrónica para obtener los animales de la API
-async function getAnimales() {
-    try { // Manejar los posibles errores con try-catch
-      let respuesta = await fetch('animales.json');
-      let datos = await respuesta.json();
-      // datos.animales.forEach(animal => {
-      //   addAnimalToTable(animal);       
-      // });
-    } catch (error) {
-      console.error('Hubo un error:', error);
-    }
-}
-console.log(animal);
 // Requerimiento 10: Mostrar el detalle de cada animal en una ventana modal al ser presionada su imagen.
 // Función para abrir la ventana modal
 function abrirModal(animal) {
-    let modal = document.getElementById('ejemploModal');
-    let contenido = document.getElementById('modal-contenido');
-    contenido.innerHTML = `<h2>${animal.nombre}</h2>
+    let modal = document.getElementById('myModal');
+    let contenido = modal.querySelector('.modal-body');
+    contenido.innerHTML = `<h2>${animal.name}</h2>
                          <p>Edad: ${animal.edad}</p>
                          <p>Comentarios: ${animal.comentarios}</p>
-                         <img src="${`./assets/imgs/${animal.nombre}.jpg`}" alt="Imagen de ${animal.nombre}">
-                         <audio src="${`./assets/sounds/${animal.nombre}.mp3`}" controls></audio>`;
+                         <img src="${animal.img}" alt="Imagen de ${animal.name}">
+                         <audio src="${animal.sonido}" controls></audio>`;
     modal.style.display = 'block';
     modal.onclick = function(evento) {
       if (evento.target == modal) {
         modal.style.display = 'none';
       }
     };
+
+    // Event listener para cerrar la ventana modal al hacer clic en la "X"
+    let closeButton = modal.querySelector('.close');
+    closeButton.addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
 }
 
+// Requerimiento 9: Programar la interacción del botón de audio, en donde deberás reproducir el sonido del animal en el sitio web. (Opcional)
+function reproducirSonido(animal) {
+    let audio = new Audio(animal.sonido);
+    audio.play();
+}
+
+// Requerimiento 7: Validar que el usuario haya asignado todos los datos del animal antes de que éste sea agregado a la tabla. (Opcional)
+function validarDatosAnimal(name, edad, comentarios) {
+    if (!name || !edad || !comentarios) {
+        return false; // Datos incompletos
+    }
+    return true; // Datos completos
+}
+
+// Requerimiento 3: Realizar una consulta asíncrona utilizando una función async/await para obtener las imágenes correspondientes a los animales. (1 Punto)
+(async function() {
+    try {
+        const response = await fetch('url_de_tu_api_aqui');
+        const data = await response.json();
+        // Aquí procesar los datos recibidos y realizar las asignaciones necesarias para obtener las imágenes de los animales
+    } catch (error) {
+        console.error('Error al obtener las imágenes de los animales:', error);
+    }
+})();
+
+// Requerimiento 4: Realizar por lo menos una función autoejecutable IIFE. (1 Punto)
+// Requerimiento 5: Dividir el código en módulos
+import autoejecutable from './autoejecutable.js';
 
 
-// Requerimiento 7: Al cargar la página, se deben cargar los animales desde el archivo JSON.
-// Requerimiento 9: Al cargar la página, se deben cargar los sonidos de los animales desde el archivo JSON.
-// Llamar a la función getAnimales cuando se carga la página
-window.onload = getAnimales;

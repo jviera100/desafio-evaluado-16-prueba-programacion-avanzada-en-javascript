@@ -11,6 +11,7 @@
     />
     <link rel="stylesheet" href="assets/css/estilos.css" />
 </head>
+
 <body>
 <div class="row">
     <div
@@ -19,7 +20,6 @@
     >
         <h3>Animales en investigación</h3>
         <hr class="my-0 bg-dark w-75 mx-auto" />
-
         <div
             id="Animales"
             class="my-3 p-3 d-flex align-items-start justify-content-start flex-wrap bg-dark"
@@ -79,16 +79,20 @@
     </div>
 </div>
 
-<audio id="player" class="d-none"></audio>
-
-<div class="modal fade" id="exampleModal">
-    <div class="modal-dialog modal-dialog-centered w-25" role="document">
-        <div class="modal-content bg-dark">
-            <div class="modal-body">...</div>
-        </div>
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="modal-body">
+        <h2 id="nombreAnimal"></h2>
+        <p id="edadAnimal"></p>
+        <p id="comentariosAnimal"></p>
+        <img id="imagenAnimal" src="" alt="Imagen del animal">
+        <audio id="audioAnimal" controls></audio>
+      </div>
     </div>
+  </div>
 </div>
-
 
 <script
     src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -105,7 +109,6 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"
 ></script>
-<!-- type module permite ver en ES6 -->
 <script type="module" src="./assets/js/script.js"></script>
 </body>
 </html>
