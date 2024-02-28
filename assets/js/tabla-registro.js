@@ -151,19 +151,34 @@ function validarDatosAnimal(name, edad, comentarios) {
     return true; // Datos completos
 }
 
-// Requerimiento 3: Realizar una consulta asíncrona utilizando una función async/await para obtener las imágenes correspondientes a los animales. (1 Punto)
-(async function() {
-    try {
-        const response = await fetch('url_de_tu_api_aqui');
-        const data = await response.json();
-        // Aquí procesar los datos recibidos y realizar las asignaciones necesarias para obtener las imágenes de los animales
-    } catch (error) {
-        console.error('Error al obtener las imágenes de los animales:', error);
-    }
-})();
+
+
+
+
+
 
 // Requerimiento 4: Realizar por lo menos una función autoejecutable IIFE. (1 Punto)
 // Requerimiento 5: Dividir el código en módulos
 import autoejecutable from './autoejecutable.js';
+
+// Importar las instancias de los reproductores desde videos.js
+import { lobo, leon, serpiente, oso, aguila } from './videos.js';
+// Exportar las instancias de los reproductores
+export { lobo, leon, serpiente, oso, aguila };
+
+// Requerimiento 3: Realizar una consulta asíncrona utilizando una función async/await para obtener las imágenes correspondientes a los animales. (1 Punto)
+import { manejoDeErrores } from './error.js';
+import { obtenerImagenesDeAnimales } from './promesa.js';
+
+(async function() {
+    try {
+        const data = await manejoDeErrores();
+        console.log('Datos de imágenes de animales:', data);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+})();
+
+
 
 
