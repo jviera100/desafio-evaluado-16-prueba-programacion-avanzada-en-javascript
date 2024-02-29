@@ -58,8 +58,10 @@ btnRegistrar.addEventListener('click', function(event) {
     // Crear una instancia de la clase Animal
     let animal = new Animal(name, edad, img, comentarios, sonido);
 
+    // AGREGA DATOS A TABLAS
     // Requerimiento 6: Utilizar la manipulación del DOM para mostrar en la tabla los animales registrados con el formulario.
-    addAnimalToTable(animal, 'Animales');
+    addAnimalToTable(animal, 'tablaAnimales'); // Agregar a la tabla de animales en investigación
+    addAnimalToTable(animal, 'Animales'); // Agregar a la tabla dinámica
 
     // Muestra la imagen en la tabla de registro
     let preview = document.getElementById('preview');
@@ -159,15 +161,19 @@ function validarDatosAnimal(name, edad, comentarios) {
 
 // Requerimiento 4: Realizar por lo menos una función autoejecutable IIFE. (1 Punto)
 // Requerimiento 5: Dividir el código en módulos
+// IMPORT FUNCION AUTOEJECUTABLE
 import autoejecutable from './autoejecutable.js';
 
+//IMPORT VIDEOS
 // Importar las instancias de los reproductores desde videos.js
 import { lobo, leon, serpiente, oso, aguila } from './videos.js';
 // Exportar las instancias de los reproductores
 export { lobo, leon, serpiente, oso, aguila };
 
+// IMPORT ERROR
 // Requerimiento 3: Realizar una consulta asíncrona utilizando una función async/await para obtener las imágenes correspondientes a los animales. (1 Punto)
 import { manejoDeErrores } from './error.js';
+// IMPORT PROMESA
 import { obtenerImagenesDeAnimales } from './promesa.js';
 
 (async function() {
@@ -178,7 +184,29 @@ import { obtenerImagenesDeAnimales } from './promesa.js';
         console.error('Error:', error);
     }
 })();
+// IMPORT TABLA-DINAMICA
+import crearTablaDinamica from './tabla-dinamica.js';
+// Define una lista de nombres únicos de animales
+const nombresDeAnimales = ['León', 'Lobo', 'Oso', 'Serpiente', 'Águila'];
+// Llama a la función para crear la tabla dinámica
+crearTablaDinamica(nombresDeAnimales);
 
+// IMPORT CALLBACK
+// Importamos la función desde el módulo callback.js
+const obtenerSonidoAnimal = require('./callback');
+// Creamos una función para registrar a un animal y mostrar su sonido
+const registrarAnimal = (animal) => {
+    console.log(`Registrando ${animal}...`);
+    // Llamamos a la función obtenerSonidoAnimal y le pasamos una función de callback para manejar el sonido
+    obtenerSonidoAnimal(animal, (sonido) => {
+        console.log(`El sonido de ${animal} es: ${sonido}`);
+    });
+};
+// Probamos la función registrarAnimal con diferentes animales
+registrarAnimal("perro");
+registrarAnimal("gato");
+registrarAnimal("pájaro");
+registrarAnimal("elefante"); // Este animal no está en nuestra base de datos, debería mostrar "No se encontró el sonido del animal"
 
 
 

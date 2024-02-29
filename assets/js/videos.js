@@ -1,7 +1,5 @@
-// videos.js
-
 // Módulo para manejar los videos
-var moduloVideo = (function() {
+let moduloVideo = (function() {
     function mostrarVideo(url, id) {
         var iframe = document.getElementById(id);
         iframe.setAttribute('src', url);
@@ -44,11 +42,11 @@ export class Reproductor extends Multimedia {
 }
 
 // Instancias de la clase Reproductor para cada video
-var lobo = new Reproductor('https://www.youtube.com/embed/humdZKv-P-0', 'lobo');
-var leon = new Reproductor('https://www.youtube.com/embed/6Oobso9uExA', 'leon');
-var serpiente = new Reproductor('https://www.youtube.com/embed/c8IQz9ymvlM', 'serpiente');
-var oso = new Reproductor('https://www.youtube.com/embed/kTClrH3c7Wc', 'oso');
-var aguila = new Reproductor('https://www.youtube.com/embed/q0htH8drH8c', 'aguila');
+let lobo = new Reproductor('https://www.youtube.com/embed/humdZKv-P-0', 'lobo');
+let leon = new Reproductor('https://www.youtube.com/embed/6Oobso9uExA', 'leon');
+let serpiente = new Reproductor('https://www.youtube.com/embed/c8IQz9ymvlM', 'serpiente');
+let oso = new Reproductor('https://www.youtube.com/embed/kTClrH3c7Wc', 'oso');
+let aguila = new Reproductor('https://www.youtube.com/embed/q0htH8drH8c', 'aguila');
 
 // Reproducir cada video
 lobo.playMultimedia();
