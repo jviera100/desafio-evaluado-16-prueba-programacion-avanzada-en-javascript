@@ -1,5 +1,3 @@
-// callback.js
-
 // Definimos una función que simula obtener el sonido de un animal de una base de datos
 const obtenerSonidoAnimal = (animal, callback) => {
     // Supongamos que aquí iría una consulta a una base de datos o alguna lógica para obtener el sonido del animal
@@ -17,5 +15,4 @@ const obtenerSonidoAnimal = (animal, callback) => {
     }, 1000); // Retardo de 1 segundo
 };
 
-// Exportamos la función para que pueda ser utilizada en otros archivos
-module.exports = obtenerSonidoAnimal;
+// El código sigue siendo igual, solo se eliminó la exportación de la función

@@ -1,4 +1,4 @@
-export function obtenerImagenesDeAnimales() {
+function obtenerImagenesDeAnimales() {
     return new Promise((resolve, reject) => {
         // Simulación de una llamada a una API
         setTimeout(() => {

@@ -9,13 +9,13 @@ class Animal {
     }
 }
 
-
 // Selecciona el botón por su ID
 let btnRegistrar = document.getElementById('btnRegistrar');
 
 // Asigna un evento de clic al botón
 btnRegistrar.addEventListener('click', function(event) {
     event.preventDefault(); // Prevenir la recarga de la página al hacer clic en el botón
+    
 
     // Aquí va el código que se ejecutará cuando se haga clic en el botón
     let name = document.getElementById('name').value; // Obtener el nombre del animal
@@ -53,6 +53,12 @@ btnRegistrar.addEventListener('click', function(event) {
 
     img = `./assets/imgs/${img}.jpg`; // Obtener la imagen del animal. Ahora todas las imágenes son .jpg
     sonido = `./assets/sounds/${sonido}.mp3`; // Obtener el sonido del animal
+
+    // Requerimiento 7: Validar que el usuario haya asignado todos los datos del animal antes de que éste sea agregado a la tabla. (Opcional)
+    if (!validarDatosAnimal(name, edad, comentarios)) {
+        alert('Por favor complete todos los campos antes de agregar el animal.');
+        return; // Detener la ejecución si los datos no son válidos
+    }
 
     // Requerimiento 2: Crear las instancias de las clases utilizando los datos del formulario.
     // Crear una instancia de la clase Animal
@@ -153,29 +159,11 @@ function validarDatosAnimal(name, edad, comentarios) {
     return true; // Datos completos
 }
 
-
-
-
-
-
-
 // Requerimiento 4: Realizar por lo menos una función autoejecutable IIFE. (1 Punto)
 // Requerimiento 5: Dividir el código en módulos
 // IMPORT FUNCION AUTOEJECUTABLE
 import autoejecutable from './autoejecutable.js';
-
-//IMPORT VIDEOS
-// Importar las instancias de los reproductores desde videos.js
-import { lobo, leon, serpiente, oso, aguila } from './videos.js';
-// Exportar las instancias de los reproductores
-export { lobo, leon, serpiente, oso, aguila };
-
-// IMPORT ERROR
 // Requerimiento 3: Realizar una consulta asíncrona utilizando una función async/await para obtener las imágenes correspondientes a los animales. (1 Punto)
-import { manejoDeErrores } from './error.js';
-// IMPORT PROMESA
-import { obtenerImagenesDeAnimales } from './promesa.js';
-
 (async function() {
     try {
         const data = await manejoDeErrores();
@@ -184,29 +172,3 @@ import { obtenerImagenesDeAnimales } from './promesa.js';
         console.error('Error:', error);
     }
 })();
-// IMPORT TABLA-DINAMICA
-import crearTablaDinamica from './tabla-dinamica.js';
-// Define una lista de nombres únicos de animales
-const nombresDeAnimales = ['León', 'Lobo', 'Oso', 'Serpiente', 'Águila'];
-// Llama a la función para crear la tabla dinámica
-crearTablaDinamica(nombresDeAnimales);
-
-// IMPORT CALLBACK
-// Importamos la función desde el módulo callback.js
-const obtenerSonidoAnimal = require('./callback');
-// Creamos una función para registrar a un animal y mostrar su sonido
-const registrarAnimal = (animal) => {
-    console.log(`Registrando ${animal}...`);
-    // Llamamos a la función obtenerSonidoAnimal y le pasamos una función de callback para manejar el sonido
-    obtenerSonidoAnimal(animal, (sonido) => {
-        console.log(`El sonido de ${animal} es: ${sonido}`);
-    });
-};
-// Probamos la función registrarAnimal con diferentes animales
-registrarAnimal("perro");
-registrarAnimal("gato");
-registrarAnimal("pájaro");
-registrarAnimal("elefante"); // Este animal no está en nuestra base de datos, debería mostrar "No se encontró el sonido del animal"
-
-
-

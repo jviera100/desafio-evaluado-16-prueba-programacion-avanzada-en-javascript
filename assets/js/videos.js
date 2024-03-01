@@ -1,19 +1,29 @@
 // Módulo para manejar los videos
 let moduloVideo = (function() {
     function mostrarVideo(url, id) {
-        var iframe = document.getElementById(id);
+        let iframe = document.getElementById(id);
         iframe.setAttribute('src', url);
     }
 
     return {
         insertarVideo: function(url, id) {
             mostrarVideo(url, id);
+        },
+        adelantarVideo: function(id) {
+            let iframe = document.getElementById(id);
+            let player = iframe.contentWindow;
+            player.postMessage('{"event":"command","func":"seekTo","args":[player.getCurrentTime() + 10,true]}', '*');
+        },
+        retrocederVideo: function(id) {
+            let iframe = document.getElementById(id);
+            let player = iframe.contentWindow;
+            player.postMessage('{"event":"command","func":"seekTo","args":[player.getCurrentTime() - 10,true]}', '*');
         }
     };
 })();
 
 // Clase padre Multimedia
-export class Multimedia {
+class Multimedia {
     constructor(url) {
         let _url = url;
         this.getUrl = () => _url;
@@ -25,7 +35,7 @@ export class Multimedia {
 }
 
 // Clase hija Reproductor
-export class Reproductor extends Multimedia {
+class Reproductor extends Multimedia {
     constructor(url, id) {
         super(url);
         this.id = id;
@@ -38,6 +48,14 @@ export class Reproductor extends Multimedia {
     setInicio(tiempo = 0) {
         let urlConTiempo = `${this.getUrl()}?start=${tiempo}`;
         moduloVideo.insertarVideo(urlConTiempo, this.id);
+    }
+
+    adelantar() {
+        moduloVideo.adelantarVideo(this.id);
+    }
+
+    retroceder() {
+        moduloVideo.retrocederVideo(this.id);
     }
 }
 
@@ -54,6 +72,3 @@ leon.playMultimedia();
 serpiente.playMultimedia();
 oso.playMultimedia();
 aguila.playMultimedia();
-
-// Exportar las instancias de los reproductores
-export { lobo, leon, serpiente, oso, aguila };

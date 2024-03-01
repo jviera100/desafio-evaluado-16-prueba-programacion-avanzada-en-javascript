@@ -1,5 +1,5 @@
 // Requerimiento 3: Realizar una consulta asíncrona utilizando una función async/await para obtener las imágenes correspondientes a los animales. (1 Punto)
-export async function manejoDeErrores() {
+async function manejoDeErrores() {
     try {
         const response = await fetch('url_de_tu_api_aqui');
         const data = await response.json();

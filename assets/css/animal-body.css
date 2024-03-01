@@ -1,0 +1,14 @@
+/* Reset de estilos para todos los elementos de CSS */
+* {
+    margin: 0; /*margen*/
+    padding: 0; /*espacio entre elementos*/
+    border: 0;    /*borde*/
+}
+/* Estilo section body animales */
+#body-animales {
+    background-image: url("../imgs/fondo-leon.jpg");   
+    background-repeat: no-repeat;  
+    padding: 100px;
+  } 
+ 
+  
