@@ -36,34 +36,35 @@
     <!-- Enlace local favicon navegador -->
     <link rel="shortcut icon" href="./assets/imgs/favicon-leon.png" type="favicon.png">
      <!-- Enlace local estilo CSS -->    
-    <link rel="stylesheet" href="assets/css/videos-body.css" />    
+    <link rel="stylesheet" href="assets/css/videos-body.css" />  
+    <link rel="stylesheet" href="assets/css/hero-footer.css" />  
   </head>
 
-<body>
-  
-  <h1>Videos de Animales</h1>
+  <body>
+    <section id="videos-youtube">
+      <h1>Videos de Animales</h1>
 
-  <div class="video-container">
+      <div class="video-container">
     <iframe id="lobo" width="560" height="315" src="https://www.youtube.com/embed/humdZKv-P-0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
+      </div>
   
-  <div class="video-container">
+      <div class="video-container">
     <iframe id="leon" width="560" height="315" src="https://www.youtube.com/embed/6Oobso9uExA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
+      </div>
   
-  <div class="video-container">
+      <div class="video-container">
     <iframe id="serpiente" width="560" height="315" src="https://www.youtube.com/embed/c8IQz9ymvlM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
+      </div>
   
-  <div class="video-container">
+      <div class="video-container">
     <iframe id="oso" width="560" height="315" src="https://www.youtube.com/embed/kTClrH3c7Wc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
+      </div>
   
-  <div class="video-container">
+      <div class="video-container">
     <iframe id="aguila" width="560" height="315" src="https://www.youtube.com/embed/q0htH8drH8c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
+      </div>
   
-  <script>
+      <script>
     // Función para controlar el avance y retroceso de los videos
     function controlarVideo(tecla) {
       var videos = document.getElementsByTagName('iframe');
@@ -85,17 +86,11 @@
         controlarVideo(event.key);
       }
     });
-  </script>
+      </script>
+    </section>
 
-
-
-
-
-
-
-<!-- TABLA DINAMICA -->
-    <!-- TABLA DE INVESTIGADORES DE ANIMALES -->
-<section id="tabla-investigadores-animales">
+<!-- TABLA DINAMICA DE INVESTIGADORES DE ANIMALES -->
+    <section id="tabla-investigadores-animales">
   <div class="tabla-dinamica">
       <h2>Investigadores de Animales</h2>
       <!-- Campo de búsqueda -->
@@ -125,46 +120,46 @@
           </tbody>
       </table>
   </div>
-</section>
-
-
-    
+    </section>    
 
 <!-- FOOTER -->
-    <footer class="footer expand-lg text-center p-4 ">
-  <h3 id="contacto">Contacto</h3>   
-
-  <div class="container text-center">
-    <div class="row">
-      <div class="col">
-        <p id="fuente"  class="mb-0">JONATHAN VIERA</p>
-      </div>
-      <div class="col">
-        <a 
-        href="https://github.com" target="_blank">
-        <i class="fa-brands fa-github"></i>
-        </a>
-        <a 
-        href="https://www.linkedin.com" target="_blank">
-        <i class="fa-brands fa-linkedin"></i>
-        </a>
-        <a 
-        href="https://twitter.com" target="_blank">
-        <i class="fa-brands fa-x-twitter"></i>
-        </a>
-        <a 
-        href="https://facebook.com" target="_blank">
-        <i class="fa-brands fa-facebook"></i>
-        </a>
-        <p class="mb-0">© 2024 Proyecto Integracion para Desafio Latam. Full Stack G64. Todos los derechos reservados.</p>           
-      </div>     
-    </div>
-  </div>    
- 
-        
-    </footer>
-  </section>
-
+    <!-- FOOTER -->
+    <section id="footer">
+      <footer class="footer expand-lg text-center p-4 ">
+        <h3 id="contacto">Contacto</h3>   
+      
+        <div class="container text-center">
+          <div class="row">
+            <div class="col">
+              <p id="footer"  class="mb-0">JONATHAN VIERA</p>
+            </div>
+            <div id="footer" class="col">
+              <a id="footer"
+              href="https://github.com" target="_blank">
+              <i class="fa-brands fa-github"></i>
+              </a>
+              <a id="footer"
+              href="https://www.linkedin.com" target="_blank">
+              <i class="fa-brands fa-linkedin"></i>
+              </a>
+              <a id="footer"
+              href="https://twitter.com" target="_blank">
+              <i class="fa-brands fa-x-twitter"></i>
+              </a>
+              <a id="footer"
+              href="https://facebook.com" target="_blank">
+              <i class="fa-brands fa-facebook"></i>
+              </a>
+              <a id="footer"
+              href="https://discord.com" target="_blank">
+              <i class="fa-brands fa-discord"></i>
+              </a>
+              <p class="mb-0">© 2024 Proyecto Integracion para Desafio Latam. Full Stack G64. Todos los derechos reservados.</p>           
+            </div>     
+          </div>
+        </div>             
+      </footer>
+    </section>
 
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
@@ -182,7 +177,7 @@
 <!-- script js -->
 <script src="./assets/js/videos-tabla-dinamica.js"></script> 
 <script src="./assets/js/videos.js"></script>
-</html>
+
 
 </body>
 </html>

@@ -4,7 +4,7 @@
 }
 /* titulo navbar */
 #titulo-navbar {
-  font-size: 20px; /* Tamaño del texto */
+  font-size: 15px; /* Tamaño del texto */
   color: black; /* Color del texto */
   -webkit-text-stroke: 2px black; /* Ancho y color del borde */  
   text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white; /* Definición del "borde" */  
