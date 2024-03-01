@@ -9,13 +9,13 @@ class Animal {
     }
 }
 
+// Requerimiento 2: Crear las instancias de las clases utilizando los datos del formulario.
 // Selecciona el botón por su ID
 let btnRegistrar = document.getElementById('btnRegistrar');
 
 // Asigna un evento de clic al botón
 btnRegistrar.addEventListener('click', function(event) {
     event.preventDefault(); // Prevenir la recarga de la página al hacer clic en el botón
-    
 
     // Aquí va el código que se ejecutará cuando se haga clic en el botón
     let name = document.getElementById('name').value; // Obtener el nombre del animal
@@ -54,20 +54,11 @@ btnRegistrar.addEventListener('click', function(event) {
     img = `./assets/imgs/${img}.jpg`; // Obtener la imagen del animal. Ahora todas las imágenes son .jpg
     sonido = `./assets/sounds/${sonido}.mp3`; // Obtener el sonido del animal
 
-    // Requerimiento 7: Validar que el usuario haya asignado todos los datos del animal antes de que éste sea agregado a la tabla. (Opcional)
-    if (!validarDatosAnimal(name, edad, comentarios)) {
-        alert('Por favor complete todos los campos antes de agregar el animal.');
-        return; // Detener la ejecución si los datos no son válidos
-    }
-
-    // Requerimiento 2: Crear las instancias de las clases utilizando los datos del formulario.
     // Crear una instancia de la clase Animal
     let animal = new Animal(name, edad, img, comentarios, sonido);
 
-    // AGREGA DATOS A TABLAS
     // Requerimiento 6: Utilizar la manipulación del DOM para mostrar en la tabla los animales registrados con el formulario.
-    addAnimalToTable(animal, 'tablaAnimales'); // Agregar a la tabla de animales en investigación
-    addAnimalToTable(animal, 'Animales'); // Agregar a la tabla dinámica
+    addAnimalToTable(animal, 'Animales');
 
     // Muestra la imagen en la tabla de registro
     let preview = document.getElementById('preview');
@@ -81,7 +72,7 @@ btnRegistrar.addEventListener('click', function(event) {
     event.target.form.reset();
 });
 
-
+// Requerimiento 5: Dividir el código en módulos
 // Función para agregar un animal a la tabla
 function addAnimalToTable(animal, tableId) {    
     // Obtiene el contenedor de animales por su ID
@@ -159,16 +150,18 @@ function validarDatosAnimal(name, edad, comentarios) {
     return true; // Datos completos
 }
 
-// Requerimiento 4: Realizar por lo menos una función autoejecutable IIFE. (1 Punto)
-// Requerimiento 5: Dividir el código en módulos
-// IMPORT FUNCION AUTOEJECUTABLE
-import autoejecutable from './autoejecutable.js';
 // Requerimiento 3: Realizar una consulta asíncrona utilizando una función async/await para obtener las imágenes correspondientes a los animales. (1 Punto)
 (async function() {
     try {
-        const data = await manejoDeErrores();
-        console.log('Datos de imágenes de animales:', data);
+        const response = await fetch('url_de_tu_api_aqui');
+        const data = await response.json();
+        // Aquí procesar los datos recibidos y realizar las asignaciones necesarias para obtener las imágenes de los animales
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Error al obtener las imágenes de los animales:', error);
     }
+})();
+
+// Requerimiento 4: Realizar por lo menos una función autoejecutable IIFE. (1 Punto)
+(function() {
+    // Código de la función autoejecutable aquí
 })();
